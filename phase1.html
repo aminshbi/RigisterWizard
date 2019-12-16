@@ -20,72 +20,109 @@
             <div class="col-3"></div>
             <div class="col-6">
                 <table class="table">
-                    <tr>
-                        <td>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                    <thead>
+                        <th>Hello !</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                                    </div>
+                                    <input id="input1" type="text" class="form-control"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input id="input1" type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <p id="vname"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
+                                <p id="vname"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
+                                    </div>
+                                    <input id="input2" type="text" class="form-control"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input id="input2" type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <p id="vemail"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">BirthDate</span>
+                                <p id="vemail"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">BirthDate</span>
+                                    </div>
+                                    <input id="input3" type="date" class="form-control"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input id="input3" type="text" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <p id="vbday"></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center;">
-                            <button type="button" class="btn btn-outline-dark">
-                                < Prev</button> <button type="button" class="btn btn-outline-dark"
-                                    onclick=" validateFunc()">Next >
-                            </button>
-                        </td>
-                    </tr>
+                                <p id="vbday"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">
+                                <button type="button" class="btn btn-outline-dark" onclick=" validateFunc()">Next >
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
                 <div class="col-3"></div>
             </div>
         </div>
     </div>
-    <!-- BootStrap scripts -->
+
+
     <script>
         function validateFunc() {
-            var x, text = "Input not valid";
+            var v, text = "Input not valid", flag;
 
-            // Get the value of the input field with id="numb"
-            x = document.getElementById("input1").value;
-            if (x.length < 3)
+            flag=true;
+            // 1 => Name
+            v = document.getElementById("input1").value;
+            if (v.length < 3) {
                 document.getElementById("vname").innerHTML = text;
+                flag = false;
+            }
             else
                 document.getElementById("vname").innerHTML = "";
 
+            // 2 => E-mail
+            v = document.getElementById("input2").value;
 
-            // document.getElementById("vemail").innerHTML = text;
-            // document.getElementById("vbday").innerHTML = text;
+            if (v.length < 1)
+                document.getElementById("vemail").innerHTML = text;
+            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+                document.getElementById("vemail").innerHTML = "Email should be a valid email";
+                flag = false;
+            }
+            else
+                document.getElementById("vemail").innerHTML = "";
+
+            // 3 => Bday
+            v = document.getElementById("input3").value;
+            if (v.length < 1)
+                document.getElementById("vbday").innerHTML = text;
+            else {
+                document.getElementById("vbday").innerHTML = "";
+                flag = false;
+            }
+
+            if (flag) {
+                //Save Name
+                localStorage.setItem('name','shahar')
+                //Save E-mail
+                localStorage.setItem('email','Name@gmail.com')
+                //Save Bday
+                localStorage.setItem('bday','05/07/2000')
+
+                //Redirect to next page (phase2)
+                Response.redirect("phase2.html");
+            }
         }
     </script>
+        <!-- BootStrap scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
