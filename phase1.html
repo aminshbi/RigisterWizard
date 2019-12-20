@@ -102,13 +102,15 @@
 
             // 3 => Bday
             v = document.getElementById("input3").value;
-            if (v.length < 1)
+            if (v.length < 1){
                 document.getElementById("vbday").innerHTML = text;
-            else {
-                document.getElementById("vbday").innerHTML = "";
                 flag = false;
             }
-
+            else {
+                document.getElementById("vbday").innerHTML = "";
+                
+            }
+            
             if (flag) {
                 //Save Name
                 localStorage.setItem('name','shahar')
@@ -118,7 +120,7 @@
                 localStorage.setItem('bday','05/07/2000')
 
                 //Redirect to next page (phase2)
-                Response.redirect("phase2.html");
+                window.location.href = 'phase2.html';
             }
         }
     </script>
