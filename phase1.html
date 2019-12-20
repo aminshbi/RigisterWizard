@@ -76,12 +76,11 @@
 
     <script>
         function validateFunc() {
-            var v, text = "Input not valid", flag;
+            var v, text = "Input not valid", flag = true, i1, i2, i3;
 
-            flag=true;
             // 1 => Name
-            v = document.getElementById("input1").value;
-            if (v.length < 3) {
+            i1 = document.getElementById("input1").value;
+            if (i1.length < 3) {
                 document.getElementById("vname").innerHTML = text;
                 flag = false;
             }
@@ -89,11 +88,11 @@
                 document.getElementById("vname").innerHTML = "";
 
             // 2 => E-mail
-            v = document.getElementById("input2").value;
+            i2 = document.getElementById("input2").value;
 
-            if (v.length < 1)
+            if (i2.length < 1)
                 document.getElementById("vemail").innerHTML = text;
-            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(i2)) {
                 document.getElementById("vemail").innerHTML = "Email should be a valid email";
                 flag = false;
             }
@@ -101,30 +100,30 @@
                 document.getElementById("vemail").innerHTML = "";
 
             // 3 => Bday
-            v = document.getElementById("input3").value;
-            if (v.length < 1){
+            i3 = document.getElementById("input3").value;
+            if (i3.length < 1) {
                 document.getElementById("vbday").innerHTML = text;
                 flag = false;
             }
             else {
                 document.getElementById("vbday").innerHTML = "";
-                
+
             }
-            
+
             if (flag) {
                 //Save Name
-                localStorage.setItem('name','shahar')
+                localStorage.setItem('name', i1)
                 //Save E-mail
-                localStorage.setItem('email','Name@gmail.com')
+                localStorage.setItem('email', i2)
                 //Save Bday
-                localStorage.setItem('bday','05/07/2000')
+                localStorage.setItem('bday', i3)
 
                 //Redirect to next page (phase2)
                 window.location.href = 'phase2.html';
             }
         }
     </script>
-        <!-- BootStrap scripts -->
+    <!-- BootStrap scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
