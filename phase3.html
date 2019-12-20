@@ -43,21 +43,21 @@
                             <h5>choose your hobbies:</h5>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="defaultChecked1" checked>
-                                <label class="custom-control-label" for="defaultChecked1" id="h1">chess</label>
+                                <label class="custom-control-label" for="defaultChecked1" >chess</label>
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="defaultChecked2" checked>
-                                <label class="custom-control-label" for="defaultChecked2" id="h2">football</label>
+                                <label class="custom-control-label" for="defaultChecked2" >football</label>
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="defaultChecked3" checked>
-                                <label class="custom-control-label" for="defaultChecked3" id="h3">basketball</label>
+                                <label class="custom-control-label" for="defaultChecked3" >basketball</label>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: center;">
-                            <button type="button" class="btn btn-outline-dark">Prev</button>
+                            <button type="button" class="btn btn-outline-dark" onclick="prevPage()">Prev</button>
                             <button type="button" class="btn btn-outline-dark" onclick=" validateFunc()">Next 
                             </button>
                         </td>
@@ -83,13 +83,18 @@
             if(!inputUrl.match(regUrl)){
                 document.getElementById("errorInvalidUrl").innerHTML = urlInvalid;flag=false;
             }
-            localStorage.setItem('chess','document.getElementById("h1").value');
-            /*localStorage.setItem('football',`${document.getElementById("h2").value()}`);
-            localStorage.setItem('basketball',`${document.getElementById("h3").value()}`);*/
-            //TODO: redirect to final page
+            if(flag){
+                localStorage.setItem('image',inputUrl);
+            }
+            localStorage.setItem('chess',`${document.getElementById("defaultChecked1").checked}`);
+            localStorage.setItem('football',`${document.getElementById("defaultChecked2").checked}`);
+            localStorage.setItem('basketball',`${document.getElementById("defaultChecked3").checked}`);
             if(flag){
                 window.location.href = 'Summary.html';
             }
+        }
+        function prevPage(){
+            window.location.href = 'phase2.html';
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
