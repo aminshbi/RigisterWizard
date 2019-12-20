@@ -24,9 +24,10 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" name="fname" required id="inputGroup-sizing-default">City</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                <input id="input1" type="text" class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
+                            <p id="vname1"></p>
                         </td>
                     </tr>
                     <tr>
@@ -35,9 +36,10 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Street</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                <input id="input2" type="text" class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
+                            <p id="vname2"></p>
                         </td>
                     </tr>
                     <tr>
@@ -45,14 +47,16 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Number</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
+                            <input id="input3"type="number" class="form-control" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default">
-                        </div></td>
+                        </div>
+                        <p id="vname3"></p>
+                    </td>
                     </tr>
                     <tr>
                         <td style="text-align: center;">
                             <button type="button" class="btn btn-outline-dark">Prev</button>
-                            <button type="submit" class="btn btn-outline-dark">Next</button>
+                            <button type="submit" class="btn btn-outline-dark" onclick=" validateFunc()">Next</button>
                         </td>
                     </tr>
                 </table>
@@ -60,7 +64,36 @@
             </div>
         </div>
     </div>
+    <script>
+        function validateFunc() {
+            let error1, error2, error3, text = "Input not valid";
 
+            // Get the value of the input field with id="numb"
+            error1 = document.getElementById("input1").value;
+            if (error1.length < 1)
+                document.getElementById("vname1").innerHTML = text;
+            else
+                document.getElementById("vname1").innerHTML = "";
+            
+            error2 = document.getElementById("input2").value;
+            if (error2.length < 1)
+                document.getElementById("vname2").innerHTML = text;
+            else
+                document.getElementById("vname2").innerHTML = "";
+            
+            error3 = document.getElementById("input3").value;
+            if (error3.length < 1 || error3 <= 0)
+                document.getElementById("vname3").innerHTML = "number should be greater than zero";
+            else
+                document.getElementById("vname3").innerHTML = "";
+
+
+
+
+            // document.getElementById("vemail").innerHTML = text;
+            // document.getElementById("vbday").innerHTML = text;
+        }
+    </script>
     <!-- BootStrap scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
