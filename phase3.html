@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Phase 1</title>
+    <title>Phase 3</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -57,8 +57,8 @@
                     </tr>
                     <tr>
                         <td style="text-align: center;">
-                            <button type="button" class="btn btn-outline-dark">< Prev</button></Prev>
-                            <button type="button" class="btn btn-outline-dark" onclick=" validateFunc()">Next >
+                            <button type="button" class="btn btn-outline-dark">Prev</button>
+                            <button type="button" class="btn btn-outline-dark" onclick=" validateFunc()">Next 
                             </button>
                         </td>
                         <td style="text-align: center;">
@@ -74,19 +74,22 @@
     <script>
         function validateFunc(){
             let urlInvalid='Invalid Url',urlEmpty='please enter a URL';
-            //let flag=true;
+            let flag=true;
             let inputUrl=document.getElementById("urlInput").value;
             if(inputUrl.length==0){
-                document.getElementById("errorEmptyUrl").innerHTML = urlEmpty;flag=false;
+               document.getElementById("errorEmptyUrl").innerHTML = urlEmpty;flag=false;
             }
             let regUrl=/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
             if(!inputUrl.match(regUrl)){
                 document.getElementById("errorInvalidUrl").innerHTML = urlInvalid;flag=false;
             }
-            localStorage.setItem('chess',`${document.getElementById("h1").value()}`);
-            localStorage.setItem('football',`${document.getElementById("h2").value()}`);
-            localStorage.setItem('basketball',`${document.getElementById("h3").value()}`);
+            localStorage.setItem('chess','document.getElementById("h1").value');
+            /*localStorage.setItem('football',`${document.getElementById("h2").value()}`);
+            localStorage.setItem('basketball',`${document.getElementById("h3").value()}`);*/
             //TODO: redirect to final page
+            if(flag){
+                window.location.href = 'Summary.html';
+            }
         }
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
